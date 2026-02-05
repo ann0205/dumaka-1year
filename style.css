@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+  background: #f2ede6;
+}
+
+/* SLIDER */
+.slider {
+  display: flex;
+  height: 100vh;
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ---------- INTRO (FIXED BG) ---------- */
+.with-bg {
+  position: relative;
+  background: url("images/bg.jpg") center / cover no-repeat;
+}
+
+.with-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 238, 230, 0.6);
+}
+
+.text-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.35);
+  padding: 22px 28px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  color: #000;
+}
+
+.hero p {
+  font-size: 1.15rem;
+}
+
+.hero span {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* ---------- MEMORY SLIDES ---------- */
+.memory {
+  position: relative;
+  background: linear-gradient(180deg, #8196d6, #e3ebe6); /* pastel sage */
+  gap: 16px;
+}
+
+.memory-img {
+  width: 78%;
+  max-width: 320px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.tap-hint {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* NOTE */
+.note {
+  position: absolute;
+  bottom: -120%;
+  width: 88%;
+  max-width: 360px;
+  transition: bottom 0.65s ease;
+}
+
+/* PAPER */
+.paper {
+  font-family: 'Handlee', cursive;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #fbf9f4,
+      #fbf9f4 24px,
+      #efeae2 25px
+    );
+  padding: 22px 20px 30px;
+  border-radius: 10px;
+  max-height: 55vh;
+  overflow-y: auto;
+  color: #111;
+
+  box-shadow:
+    0 18px 35px rgba(0,0,0,0.18),
+    inset 0 0 10px rgba(0,0,0,0.05);
+
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform 0.6s ease;
+}
+
+.paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 14px;
+  background:
+    radial-gradient(circle at 10px 0, transparent 8px, #fbf9f4 9px);
+}
+
+.paper h3 {
+  margin-bottom: 10px;
+}
+
+.paper p {
+  line-height: 1.7;
+}
+
+/* ACTIVE MEMORY */
+.memory.active .note {
+  bottom: 6%;
+}
+
+.memory.active .paper {
+  transform: scaleY(1);
+}
+
+.memory.active .memory-img {
+  transform: scale(0.9);
+}
+
+/* ---------- LAST SLIDE ---------- */
+.last {
+  background: linear-gradient(180deg, #92e2e6, #ebe4db);
+}
+
+.last-card {
+  background: rgba(255,255,255,0.5);
+  padding: 28px 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.last-card h2 {
+  font-size: 1.9rem;
+  margin: 10px 0;
+}
+
+.last-card .small {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.last-card .tiny {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ---------- PROGRESS ---------- */
+.progress {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.dot {
+  width: 18px;
+  height: 4px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 6px;
+}
+
+.dot.active {
+  background: #555;
+}
+
+/* ---------- TERMS SLIDE ---------- */
+.terms {
+  background: linear-gradient(180deg, #6588eb, #ece4da);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.contract {
+  width: 88%;
+  max-width: 360px;
+  background: #fbf9f4;
+  border-radius: 12px;
+  padding: 26px 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  position: relative;
+  transform: rotate(-1deg);
+  font-family: 'Handlee', cursive;
+}
+
+/* subtle paper texture lines */
+.contract::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.03),
+    rgba(0,0,0,0.03) 1px,
+    transparent 18px,
+    transparent 26px
+  );
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.contract h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: #111;
+  position: relative;
+  z-index: 2;
+}
+
+.contract ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: #111;
+  position: relative;
+  z-index: 2;
+}
+
+.contract li {
+  line-height: 1.5;
+}
+
+.sign {
+  margin-top: 20px;
+  font-size: 1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+}
+
+.signature {
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+
+
